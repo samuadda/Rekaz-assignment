@@ -1,9 +1,5 @@
-import Image from "next/image";
+import { Builder } from '@/components/builder/Builder';
 
 export default function Home() {
-	return (
-		<div className="flex w-screen h-screen justify-center items-center p-20">
-      <h1 className="text-7xl font-bold text-orange-500">Rekaz Assignment</h1>
-    </div>
-	);
+  return <Builder />;
 }
