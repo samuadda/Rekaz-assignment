@@ -2,11 +2,16 @@
 
 import { useBuilder } from '@/lib/builder/context';
 
+import { SectionFrame } from './SectionFrame';
+
 export function PreviewPane() {
-  const { sections } = useBuilder();
+  const { sections, selectedId, selectSection, removeSection } = useBuilder();
 
   return (
-    <main className="flex-1 overflow-auto bg-neutral-50">
+    <main
+      onClick={() => selectSection(null)}
+      className="flex-1 overflow-auto bg-neutral-100 p-4 sm:p-6"
+    >
       {sections.length === 0 ? (
         <div className="flex h-full items-center justify-center p-8 text-center">
           <p className="max-w-sm text-sm text-neutral-500">
@@ -14,9 +19,19 @@ export function PreviewPane() {
           </p>
         </div>
       ) : (
-        <div className="mx-auto bg-white shadow-sm">
-          {/* sections will render here in Step 6 */}
-          <p className="p-8 text-sm text-neutral-500">{sections.length} section(s) — preview wiring lands in Step 6.</p>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="mx-auto overflow-hidden rounded-lg bg-white shadow-sm"
+        >
+          {sections.map((section) => (
+            <SectionFrame
+              key={section.id}
+              section={section}
+              isSelected={section.id === selectedId}
+              onSelect={selectSection}
+              onDelete={removeSection}
+            />
+          ))}
         </div>
       )}
     </main>
