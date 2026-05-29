@@ -33,7 +33,11 @@ export interface PricingSection {
   type: 'pricing';
   data: {
     heading: string;
-    tiers: Array<{ name: string; price: string; features: string[] }>;
+    tiers: Array<{
+      name: string;
+      price: string;
+      features: Array<{ text: string }>;
+    }>;
   };
 }
 
