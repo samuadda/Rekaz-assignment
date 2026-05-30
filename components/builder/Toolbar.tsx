@@ -1,13 +1,23 @@
 'use client';
 
+import { BreakpointToggle, type PreviewBreakpoint } from './BreakpointToggle';
+import { ImportExportButtons } from './ImportExportButtons';
+
 interface Props {
   onOpenLibrary: () => void;
   onOpenEditor: () => void;
+  previewBreakpoint: PreviewBreakpoint;
+  onChangeBreakpoint: (value: PreviewBreakpoint) => void;
 }
 
-export function Toolbar({ onOpenLibrary, onOpenEditor }: Props) {
+export function Toolbar({
+  onOpenLibrary,
+  onOpenEditor,
+  previewBreakpoint,
+  onChangeBreakpoint,
+}: Props) {
   return (
-    <header className="flex items-center justify-between border-b border-neutral-200 bg-white px-4 py-3">
+    <header className="grid grid-cols-[1fr_auto_1fr] items-center border-b border-neutral-200 bg-white px-4 py-3">
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -19,19 +29,10 @@ export function Toolbar({ onOpenLibrary, onOpenEditor }: Props) {
         <span className="text-sm font-semibold tracking-tight">Mini Website Builder</span>
       </div>
 
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="rounded-md border border-neutral-200 px-3 py-1.5 text-sm font-medium hover:bg-neutral-50"
-        >
-          Import
-        </button>
-        <button
-          type="button"
-          className="rounded-md border border-neutral-200 px-3 py-1.5 text-sm font-medium hover:bg-neutral-50"
-        >
-          Export
-        </button>
+      <BreakpointToggle value={previewBreakpoint} onChange={onChangeBreakpoint} />
+
+      <div className="flex items-center justify-end gap-2">
+        <ImportExportButtons />
         <button
           type="button"
           onClick={onOpenEditor}

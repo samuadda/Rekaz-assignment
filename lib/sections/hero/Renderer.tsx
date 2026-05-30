@@ -6,11 +6,11 @@ interface Props {
 
 export function HeroRenderer({ data }: Props) {
   return (
-    <section className="px-6 py-20 text-center sm:px-12 md:py-28">
-      <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+    <section className="px-6 py-20 text-center @sm:px-12 @md:py-28">
+      <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight @sm:text-4xl @md:text-5xl">
         {data.title}
       </h1>
-      <p className="mx-auto mt-4 max-w-2xl text-base text-neutral-600 sm:text-lg">
+      <p className="mx-auto mt-4 max-w-2xl text-base text-neutral-600 @sm:text-lg">
         {data.subtitle}
       </p>
       {data.imageUrl && (

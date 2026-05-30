@@ -6,8 +6,8 @@ interface Props {
 
 export function FooterRenderer({ data }: Props) {
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50 px-6 py-12 sm:px-12">
-      <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-2 md:grid-cols-4">
+    <footer className="border-t border-neutral-200 bg-neutral-50 px-6 py-12 @sm:px-12">
+      <div className="mx-auto grid max-w-6xl gap-10 @sm:grid-cols-2 @md:grid-cols-4">
         <div className="text-lg font-semibold tracking-tight">{data.logoText}</div>
         {data.columns.map((col, i) => (
           <div key={i}>
